@@ -5,24 +5,24 @@
 #include "monty.h"
 
 /**
- * _sub -  substracts the first two nodes of the stack
+ * _mul - divides the next top value by the top value
  * @stack: stack given by main
- * @line_cnt: line counter
+ * @lnCount: line counter
  *
  * Return: void
  */
-void _sub(stack_t **stack, unsigned int line_cnt)
+void _mul(stack_t **stack, unsigned int lnCount)
 {
 	int result;
 
 	if (!stack || !*stack || !((*stack)->next))
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_cnt);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", lnCount);
 		status = EXIT_FAILURE;
 		return;
 	}
 
-	result = ((*stack)->next->n) - ((*stack)->n);
-	pop(stack, line_cnt);/*For top node*/
+	result = ((*stack)->next->n) * ((*stack)->n);
+	pop(stack, lnCount);/*For top node*/
 	(*stack)->n = result;
 }

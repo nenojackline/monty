@@ -39,10 +39,10 @@ typedef struct instruction_s
 		{"pop", pop},\
 		{"swap", swap},\
 		{"nop", nop},\
-		{"div", _div},\
+		{"div", fnDiv},\
 		{"mul", _mul},\
-		{"add", _add},\
-		{"sub", _sub},\
+		{"add", fnAdd},\
+		{"sub", fnSub},\
 		{"mod", mod},\
 		{"pchar", pchar},\
 		{"pstr", pstr},\
@@ -66,29 +66,29 @@ help global;
 
 extern int status;
 
-void push(stack_t **stack, unsigned int line_cnt);
-void pall(stack_t **stack, unsigned int line_cnt);
-void pint(stack_t **stack, unsigned int line_cnt);
-void swap(stack_t **stack, unsigned int line_cnt);
-void pop(stack_t **stack, unsigned int line_cnt);
-void nop(stack_t **stack, unsigned int line_cnt);
-void _div(stack_t **stack, unsigned int line_cnt);
-void _add(stack_t **stack, unsigned int line_cnt);
-void _sub(stack_t **stack, unsigned int line_cnt);
-void _mul(stack_t **stack, unsigned int line_cnt);
-void mod(stack_t **stack, unsigned int line_cnt);
-void pchar(stack_t **stack, unsigned int line_cnt);
-void pstr(stack_t **stack, unsigned int line_cnt);
-void rotl(stack_t **stack, unsigned int line_count);
-void rotr(stack_t **stack, unsigned int line_count);
-void opcode(stack_t **stack, char *str, unsigned int line_cnt);
+void push(stack_t **stack, unsigned int lnCount);
+void pall(stack_t **stack, unsigned int lnCount);
+void pint(stack_t **stack, unsigned int lnCount);
+void swap(stack_t **stack, unsigned int lnCount);
+void pop(stack_t **stack, unsigned int lnCount);
+void nop(stack_t **stack, unsigned int lnCount);
+void fnDiv(stack_t **stack, unsigned int lnCount);
+void fnAdd(stack_t **stack, unsigned int lnCount);
+void fnSub(stack_t **stack, unsigned int lnCount);
+void _mul(stack_t **stack, unsigned int lnCount);
+void mod(stack_t **stack, unsigned int lnCount);
+void pchar(stack_t **stack, unsigned int lnCount);
+void pstr(stack_t **stack, unsigned int lnCount);
+void rotl(stack_t **stack, unsigned int ln_count);
+void rotr(stack_t **stack, unsigned int ln_count);
+void opcode(stack_t **stack, char *vstr, unsigned int lnCount);
 
-int is_digit(char *string);
-int isnumber(char *str);
+int fnIsDigit(char *string);
+int fnIsNumber(char *vstr);
 
-stack_t *add_node(stack_t **stack, const int n);
-stack_t *queue_node(stack_t **stack, const int n);
-void free_stack(stack_t *stack);
-size_t print_stack(const stack_t *stack);
+stack_t *fnAddNode(stack_t **stack, const int n);
+stack_t *fnQueueNode(stack_t **stack, const int n);
+void fnFreeStack(stack_t *stack);
+size_t fnPrintStack(const stack_t *stack);
 
 #endif /* MONTY_H */

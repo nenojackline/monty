@@ -6,23 +6,23 @@
 /**
  * opcode - function in charge of running builtins
  * @stack: stack given by main
- * @str: string to compare
- * @line_cnt: ammount of lines
+ * @vstr: string to compare
+ * @lnCount: ammount of lines
  *
  * Return: nothing
  */
-void opcode(stack_t **stack, char *str, unsigned int line_cnt)
+void opcode(stack_t **stack, char *vstr, unsigned int lnCount)
 {
 	int i = 0;
 
 	instruction_t op[] = INSTRUCTIONS;
 
-	if (!strcmp(str, "stack"))
+	if (!strcmp(vstr, "stack"))
 	{
 		global.data_struct = 1;
 		return;
 	}
-	if (!strcmp(str, "queue"))
+	if (!strcmp(vstr, "queue"))
 	{
 		global.data_struct = 0;
 		return;
@@ -30,13 +30,13 @@ void opcode(stack_t **stack, char *str, unsigned int line_cnt)
 
 	while (op[i].opcode)
 	{
-		if (strcmp(op[i].opcode, str) == 0)
+		if (strcmp(op[i].opcode, vstr) == 0)
 		{
-			op[i].f(stack, line_cnt);
+			op[i].f(stack, lnCount);
 			return; /* if we found a match, run the function */
 		}
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_cnt, str);
+	fprintf(stderr, "L%d: unknown instruction %s\n", lnCount, vstr);
 	status = EXIT_FAILURE;
 }

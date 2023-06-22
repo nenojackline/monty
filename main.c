@@ -40,9 +40,9 @@ int main(int argc, char **argv)
 	FILE *file;
 	size_t buf_len = 0;
 	char *buffer = NULL;
-	char *str = NULL;
+	char *vstr = NULL;
 	stack_t *stack = NULL;
-	unsigned int line_cnt = 1;
+	unsigned int lnCount = 1;
 
 	global.data_struct = 1;
 	if (argc != 2)
@@ -59,21 +59,21 @@ int main(int argc, char **argv)
 			break;
 		if (*buffer == '\n')
 		{
-			line_cnt++;
+			lnCount++;
 			continue;
 		}
-		str = strtok(buffer, " \t\n");
-		if (!str || *str == '#')
+		vstr = strtok(buffer, " \t\n");
+		if (!vstr || *vstr == '#')
 		{
-			line_cnt++;
+			lnCount++;
 			continue;
 		}
 		global.argument = strtok(NULL, " \t\n");
-		opcode(&stack, str, line_cnt);
-		line_cnt++;
+		opcode(&stack, vstr, lnCount);
+		lnCount++;
 	}
 	free(buffer);
-	free_stack(stack);
+	fnFreeStack(stack);
 	fclose(file);
 	exit(status);
 }

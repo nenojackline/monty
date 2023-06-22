@@ -8,21 +8,21 @@
 /**
  * pchar - prints the int at the top of the stack as char
  * @stack: stack given by main
- * @line_cnt: ammount of lines
+ * @lnCount: ammount of lines
  *
  * Return: void
  */
-void pchar(stack_t **stack, unsigned int line_cnt)
+void pchar(stack_t **stack, unsigned int lnCount)
 {
 	if (!stack || !(*stack))
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_cnt);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", lnCount);
 		status = EXIT_FAILURE;
 		return;
 	}
 	if (isascii((*stack)->n) == 0)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_cnt);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", lnCount);
 		status = EXIT_FAILURE;
 		return;
 	}

@@ -3,12 +3,12 @@
 /**
  * nop - lol this does nothing
  * @stack: doesnt matter
- * @line_cnt : for nothing
+ * @lnCount : for nothing
  *
  * Return: NOTHING
  */
-void nop(stack_t **stack, unsigned int line_cnt)
+void nop(stack_t **stack, unsigned int lnCount)
 {
 	(void) stack;
-	(void) line_cnt;
+	(void) lnCount;
 }

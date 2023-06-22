@@ -7,24 +7,24 @@
 /**
  * push - push element into the stack
  * @stack: stack given by main
- * @line_cnt: ammount of lines
+ * @lnCount: ammount of lines
  *
  * Return: void
  */
-void push(stack_t **stack, unsigned int line_cnt)
+void push(stack_t **stack, unsigned int lnCount)
 {
 	char *n = global.argument;
 
-	if ((is_digit(n)) == 0)
+	if ((fnIsDigit(n)) == 0)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_cnt);
+		fprintf(stderr, "L%d: usage: push integer\n", lnCount);
 		status = EXIT_FAILURE;
 		return;
 	}
 
 	if (global.data_struct == 1)
 	{
-		if (!add_node(stack, atoi(global.argument)))
+		if (!fnAddNode(stack, atoi(global.argument)))
 		{
 			return;
 			status = EXIT_FAILURE;
@@ -32,7 +32,7 @@ void push(stack_t **stack, unsigned int line_cnt)
 	}
 	else
 	{
-		if (!queue_node(stack, atoi(global.argument)))
+		if (!fnQueueNode(stack, atoi(global.argument)))
 		{
 			return;
 			status = EXIT_FAILURE;
